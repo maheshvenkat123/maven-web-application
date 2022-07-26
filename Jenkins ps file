@@ -10,7 +10,7 @@ node
     {
         sh "${mavenHome}/bin/mvn clean package"
     }
-    /*
+    
     stage('ExecuteSonarQubeReport')
     {
         sh "${mavenHome}/bin/mvn sonar:sonar"
@@ -25,5 +25,9 @@ node
     sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@65.0.131.150:/opt/apache-tomcat-9.0.64/webapps/"
     }
     }
-    */
+    post{
+         always{
+                   slackSend channel: '#happy-pay', message: "status of the project - ${env.JOB_NAME} ${env.BUILD_NUMBER} ${env.BUILD_URL} ${currentBuild.currentResult}" 
+}
+}
 }
