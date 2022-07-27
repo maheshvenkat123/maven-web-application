@@ -25,9 +25,5 @@ node
     sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@3.108.54.37:/opt/apache-tomcat-9.0.64/webapps/"
     }
     }
-    post{
-         always{
-                   slackSend channel: '#happy-pay', message: "status of the project - ${env.JOB_NAME} ${env.BUILD_NUMBER} ${env.BUILD_URL} ${currentBuild.currentResult}" 
-}
-}
+   
 }
