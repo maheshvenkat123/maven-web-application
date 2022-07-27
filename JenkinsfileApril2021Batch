@@ -31,7 +31,7 @@ node('wallmart-node')
  sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@52.64.130.198:/opt/apache-tomcat-9.0.45/webapps/"
  }
  }
-*/
+
  stage('SendEmailNotification')
  {
  emailext body: '''Build Over..
@@ -40,6 +40,6 @@ node('wallmart-node')
  Mithun Technologies,
  9980923226''', subject: 'Build Over...', to: 'devopstrainingblr@gmail.com'
  }
-
+*/
 
 }
